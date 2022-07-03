@@ -1,0 +1,158 @@
+form {
+  margin: 20px auto;
+}
+
+.form {
+  border: 2px solid pink;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 600px;
+}
+
+#inputCity:focus {
+  border-color: palevioletred;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.733), 0 0 8px pink;
+}
+
+::selection {
+  background-color: rgba(247, 206, 213, 0.747);
+}
+
+#sub {
+  color: beige;
+  border-color: palevioletred;
+  background-color: palevioletred;
+  transition: all 200ms ease-in-out;
+}
+
+/* .btn-primary {
+
+} */
+
+#sub:hover {
+  color: palevioletred;
+  background-color: beige;
+  border-color: palevioletred;
+}
+
+#sub:active {
+  font-weight: 700;
+  color: #a08bb5;
+  background-color: beige;
+  border-color: #a08bb5;
+  box-shadow: none;
+}
+
+/* .btn-primary:focus {
+  color: beige;
+  border-color: palevioletred;
+  background-color: palevioletred;
+} */
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.main {
+  text-align: center;
+  font-family: "Merriweather", serif;
+}
+
+.main h1 {
+  font-size: 44px;
+  font-weight: 700;
+}
+
+.main img {
+  position: relative;
+  width: 40%;
+  height: auto;
+  top: -15px;
+  pointer-events: none;
+}
+
+.main h2 {
+  position: relative;
+  top: -23px;
+  font-weight: 400;
+}
+
+.forecast {
+  text-align: center;
+  display: inline;
+  position: relative;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+#display-time {
+  display: block;
+  margin: 0 auto;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+h2 span {
+  font-size: 35px;
+  font-family: serif;
+  font-weight: 800;
+}
+
+h2 #line {
+  font-size: 27px;
+}
+
+.degLink {
+  font-family: monospace;
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: -100px;
+  color: palevioletred;
+  text-decoration: none;
+}
+
+.degLink:hover {
+  color: palevioletred;
+  text-decoration: underline;
+}
+
+#current {
+  border-color: #a08bb5;
+  background-color: #a08bb5;
+  color: beige;
+  transition: all 200ms ease-in-out;
+}
+
+#current:hover {
+  border-color: #a08bb5;
+  color: #a08bb5;
+  background-color: beige;
+}
+#current:active {
+  font-weight: 700;
+  color: palevioletred;
+  background-color: beige;
+  border-color: palevioletred;
+  box-shadow: none;
+}
+/* 
+.btn-primary:focus {
+  color: beige;
+  border-color: palevioletred;
+  background-color: palevioletred;
+} */
+
+#source-code a {
+  color: #a08bb5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#source-code {
+  font-family: monospace;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
