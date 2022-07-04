@@ -92,10 +92,8 @@ function changeCity(response) {
     axios.get(url).then(function (feedback) {
       let temp = feedback.data.main.temp;
       let res = Math.round(temp);
-      console.log(feedback.data.weather[0].icon);
       let resCity = feedback.data.name;
       let desc = feedback.data.weather[0].main;
-      console.log(desc);
       checkWeather(desc);
       let h1 = document.querySelector("h1");
       h1.innerHTML = `${resCity}`;
@@ -121,17 +119,13 @@ function changeCity(response) {
 function getCoord(response) {
   let lat = response.coords.latitude;
   let long = response.coords.longitude;
-  console.log(`Latitude: ${lat}\nLongitude: ${long}`);
   let url = `https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${lat}&lon=${long}&appid=${apiKey}`;
   axios.get(url).then(function (resp) {
     let temp = resp.data.main.temp;
     let res = Math.round(temp);
-    console.log(resp);
-    console.log(res);
     let name = resp.data.name;
     let desc = resp.data.weather[0].main;
     checkWeather(desc);
-    console.log(desc);
     let h1 = document.querySelector("h1");
     h1.innerHTML = `${name}`;
     let h2 = document.querySelector("h2");
