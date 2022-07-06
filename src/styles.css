@@ -79,6 +79,7 @@ form {
   position: relative;
   top: -23px;
   font-weight: 400;
+  display: inline;
 }
 
 .forecast {
@@ -161,4 +162,40 @@ h2 #line {
 
 body {
   background-color: #f9f7fe;
+}
+
+#icon{
+  position: relative;
+  top: -30px;
+  font-weight: 400;
+  height: 45px;
+  width: 50px;
+}
+
+#humidity{
+  display: inline;
+  font-family: monospace;
+  text-align: center;
+  position: relative;
+  top: -20px;
+  /* bottom: -20px; */
+  font-size: 13px;
+}
+
+#wind{
+    display: inline;
+  font-family: monospace;
+  text-align: center;
+  position: relative;
+  font-size: 13px;
+  top: -30px;
+}
+
+.degLink.active{
+  color: black;
+}
+
+.degLink.active:hover{
+  text-decoration: none;
+  cursor: default;
 }
