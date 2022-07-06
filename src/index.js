@@ -42,6 +42,8 @@ function cel(degree) {
 function convertToF(event) {
   event.preventDefault();
   let temperature = document.querySelector("#temp");
+  document.querySelector("#fahrenheit").classList.add("active");
+  document.querySelector("#celcius").classList.remove("active");
   let val = temperature.innerText;
   if (val) {
     temperature.innerHTML = fah(val);
@@ -51,6 +53,8 @@ function convertToF(event) {
 function convertToC(event) {
   event.preventDefault();
   let temperature = document.querySelector("#temp");
+  document.querySelector("#fahrenheit").classList.remove("active");
+  document.querySelector("#celcius").classList.add("active");
   let val = temperature.innerText;
   if (val) {
     temperature.innerHTML = cel(val);
@@ -94,13 +98,25 @@ function changeCity(response) {
       let res = Math.round(temp);
       let resCity = feedback.data.name;
       let desc = feedback.data.weather[0].main;
+
+      let humidityElement = document.querySelector("#humidity");
+      let windElement = document.querySelector("#wind");
+      humidityElement.innerHTML = `Humidity: ${feedback.data.main.humidity}%`;
+      windElement.innerHTML = `Wind: ${Math.round(
+        feedback.data.wind.speed
+      )}km/h`;
+      let iconID = feedback.data.weather[0].icon;
+      let src = `http://openweathermap.org/img/wn/${iconID}@2x.png`;
+      let iconElement = document.querySelector("#icon");
+      iconElement.setAttribute("alt", desc);
+      iconElement.setAttribute("src", src);
       checkWeather(desc);
       let h1 = document.querySelector("h1");
       h1.innerHTML = `${resCity}`;
       let h2 = document.querySelector("h2");
       h2.innerHTML = `${desc},
             <span><span id="temp">${res}</span>°</span>
-            <a href="#" id="celcius" class="degLink">C</a
+            <a href="#" id="celcius" class="degLink active">C</a
             ><span id="line"> | </span
             ><a href="#" id="fahrenheit" class="degLink">F</a>`;
       time();
@@ -125,14 +141,22 @@ function getCoord(response) {
     let res = Math.round(temp);
     let name = resp.data.name;
     let desc = resp.data.weather[0].main;
+    let iconID = resp.data.weather[0].icon;
+    let humidityElement = document.querySelector("#humidity");
+    let windElement = document.querySelector("#wind");
+    humidityElement.innerHTML = `Humidity: ${resp.data.main.humidity}%`;
+    windElement.innerHTML = `Wind: ${Math.round(resp.data.wind.speed)}km/h`;
+    let src = `http://openweathermap.org/img/wn/${iconID}@2x.png`;
+    let iconElement = document.querySelector("#icon");
+    iconElement.setAttribute("src", src);
+    iconElement.setAttribute("alt", desc);
     checkWeather(desc);
     let h1 = document.querySelector("h1");
     h1.innerHTML = `${name}`;
     let h2 = document.querySelector("h2");
     h2.innerHTML = `
-            ${desc},
-            <span><span id="temp">${res}</span>°</span>
-            <a href="#" id="celcius" class="degLink">C</a
+            ${desc}, <span><span id="temp">${res}</span>°</span>
+            <a href="#" id="celcius" class="degLink active">C</a
             ><span id="line"> | </span
             ><a href="#" id="fahrenheit" class="degLink">F</a>`;
     time();
@@ -148,9 +172,37 @@ function getLocationTemp(event) {
   navigator.geolocation.getCurrentPosition(getCoord);
 }
 
+function defaultCity() {
+  let city = "Kyiv";
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  axios.get(url).then(function (response) {
+    let h2 = document.querySelector("h2");
+    let desc = response.data.weather[0].main;
+    let res = Math.round(response.data.main.temp);
+    let iconID = response.data.weather[0].icon;
+    let src = `http://openweathermap.org/img/wn/${iconID}@2x.png`;
+    let iconElement = document.querySelector("#icon");
+    let humidityElement = document.querySelector("#humidity");
+    let windElement = document.querySelector("#wind");
+    humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+    windElement.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}km/h`;
+    iconElement.setAttribute("alt", desc);
+    iconElement.setAttribute("src", src);
+    checkWeather(desc);
+    h2.innerHTML = `${desc}, <span><span id="temp">${res}</span>°</span>
+            <a href="#" id="celcius" class="degLink active">C</a
+            ><span id="line"> | </span
+            ><a href="#" id="fahrenheit" class="degLink">F</a>`;
+    time();
+    f();
+    c();
+  });
+}
+
+defaultCity();
 time();
-f();
-c();
+// f();
+// c();
 
 let form = document.querySelector(".form");
 form.addEventListener("submit", changeCity);
