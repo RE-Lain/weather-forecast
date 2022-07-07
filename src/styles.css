@@ -28,10 +28,6 @@ form {
   transition: all 200ms ease-in-out;
 }
 
-/* .btn-primary {
-
-} */
-
 #sub:hover {
   color: palevioletred;
   background-color: beige;
@@ -45,12 +41,6 @@ form {
   border-color: #a08bb5;
   box-shadow: none;
 }
-
-/* .btn-primary:focus {
-  color: beige;
-  border-color: palevioletred;
-  background-color: palevioletred;
-} */
 
 .btn:focus {
   outline: none;
@@ -140,12 +130,6 @@ h2 #line {
   border-color: palevioletred;
   box-shadow: none;
 }
-/* 
-.btn-primary:focus {
-  color: beige;
-  border-color: palevioletred;
-  background-color: palevioletred;
-} */
 
 #source-code a {
   color: #a08bb5;
@@ -161,41 +145,37 @@ h2 #line {
 }
 
 body {
-  background-color: #f9f7fe;
+  background-color: #f0ecf9;
 }
 
-#icon{
-  position: relative;
-  top: -30px;
-  font-weight: 400;
-  height: 45px;
-  width: 50px;
-}
-
-#humidity{
+#humidity {
   display: inline;
   font-family: monospace;
   text-align: center;
   position: relative;
-  top: -20px;
-  /* bottom: -20px; */
+  top: -10px;
   font-size: 13px;
 }
 
-#wind{
-    display: inline;
+#wind {
+  display: inline;
   font-family: monospace;
   text-align: center;
   position: relative;
   font-size: 13px;
-  top: -30px;
+  top: -20px;
 }
 
-.degLink.active{
+.degLink.active {
   color: black;
 }
 
-.degLink.active:hover{
+.degLink.active:hover {
   text-decoration: none;
   cursor: default;
+}
+
+#forecast-icon {
+  height: 45px;
+  width: 50px;
 }
